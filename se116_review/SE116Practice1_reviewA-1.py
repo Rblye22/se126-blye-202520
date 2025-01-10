@@ -26,7 +26,6 @@ def again(): #<----- Function header
         print("***INVALID ENTRY!***")
         ans = input("\t\tWould you like to enter another temperature? [y/n]: ").lower()
 
-
         return ans
 
 def converter(f):
