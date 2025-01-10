@@ -10,14 +10,45 @@
 #VARIABLE DICTIONARY:
 
 #--------IMPORTS----------------------------------------------
-
+from os import system, name
 #--------FUNCTIONS--------------------------------------------
+
+def clear():
+    if name == 'nt': 
+        _ = system('cls') 
+    else:
+         _ = system('clear')
+
+people = int(input("Enter ammount of people attending the meeting."))
+max_cap = int(input("Enter room max capacity"))
+
 def difference(people, max_cap):
-
-
+    '''This is the function that tells the difference of people in the room and the max capacity.'''
+    people == int(input("Enter the amount of people attending the meeting"))
+    max_cap == int(input("Enter the max capacity for the room"))
+    while people <= max_cap:
+        max_cap - people = answer + 1
+        if people >= max_cap:
+            people - max_cap = answer - 1
 
 def decision(response):
-      
+    '''This is the response to the amount of peope who need to be removed or can be added to the meeting.'''
+    while answer!="y" or answer !="Y":
+        if people <= max_cap:
+            print (f"You can add up to {answer} people")
+            
+
 
 
 #--------MAIN EXECUTING CODE----------------------------------
+#initializing needed variables
+clear()
+answer = "y"
+
+
+#start of loop - will be based on answer, and user can change value at end of loop
+while answer == "y" or answer=="Y":
+    print("\tWelcome to the Fire Department fire saftey program!")
+    print(input("\tPlease enter your meeting name:"))
+    print(input("\tHow many people are attending this meeting?"))
+    print(input("\tWhat is the maximun capacity for that room?"))
