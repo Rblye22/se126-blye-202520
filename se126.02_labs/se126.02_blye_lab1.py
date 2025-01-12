@@ -12,9 +12,10 @@
 #--------IMPORTS----------------------------------------------
 from os import system, name
 #--------FUNCTIONS--------------------------------------------
+
 max_cap = 1
 people = 1
-response = 0
+response = 1
 
 def clear():
     if name == 'nt': 
@@ -25,57 +26,55 @@ def clear():
 
 def difference(people, max_cap):
     '''This is the function that tells the difference of people in the room and the max capacity.'''
-    while people <= max_cap:
-        open_seats = max_cap - people 
 
-        print(f"{open_seats} people can be added to the meeting and still meet fire regulations ")
+    max_cap = (int(input("\n\tWhat is the maximun capacity for that room?")))
+    people = (int(input("\n\tHow many people are attending this meeting?")))
+
+    while answer =="y":  
+    
+        if people <= max_cap:
+            open_seats = max_cap - people 
+
+            print(f"\n\t{open_seats} people can be added to the meeting and still meet fire regulations.")
 
         if people >= max_cap:
-
             ppl_over = people - max_cap
             ppl_over + 1
-            print(f"{ppl_over} people must be removed from the meeting to meet fire regulations.")
 
-            return answer
+            print(f"\n\t{ppl_over} people must be removed from the meeting to meet fire regulations.")
+
+        return answer
 
 def decision(response):
-    '''This is the function to ask the user if they would like to continue to check the program for another meeting attendance information."'''
-
-    answer = input("\t\tWould you like to check another meeting? [y/n]: ").lower()
+    '''This is the function to ask the user if they would like to continue to check the program for another meeting attendance information.'''
+    answer = response
+    response + 1
+    #while loop trap - ensure user provides valid value before moving on
     
-    while answer =="y" or answer =="n":
-        if answer == "y":
-            answer == "y"
+    answer = input("\n\tWould you like to enter another meeting? [y/n]: ").lower()
 
-        if answer == "n":
-         answer != "y"
+    while answer != "y" and answer != "n":
+        print("***INVALID ENTRY!***")
+        answer = input("\n\tWould you like to check another meeting? [y/n]: ").lower()
 
-        elif answer != "y" or answer != "n":
-            print("***INVALID ENTRY!***")
-            answer = input("\t\tWould you like to check anothe meeting? [y/n]: ").lower()
-
-            return answer
+        return answer
             
 
 
 #--------MAIN EXECUTING CODE----------------------------------
-
 clear()
+
 answer = "y"
+
 
 #start of loop - will be based on answer, and user can change value at end of loop
 while answer == "y":
-    print("\tWelcome to the Fire Department fire saftey program!")
+    print("\n\tWelcome to the Fire Department fire saftey program!")
 
-    print(input("\tPlease enter your meeting name:"))
-
-    print(int(input("\tHow many people are attending this meeting?")))
-
-    print(int(input("\tWhat is the maximun capacity for that room?")))
+    print(input("\n\tPlease enter your meeting name:"))
 
     difference(people,max_cap)
 
-    decision(response)
+    answer = decision(response)
 
-else:
-    print("Thank you for your complaince with our fire code")
+
