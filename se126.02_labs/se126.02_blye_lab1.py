@@ -56,6 +56,9 @@ def decision(response):
         print("***INVALID ENTRY!***")
         response = input("\n\tWould you like to check another meeting? [y/n]: ").lower()
 
+        if response == "n":
+            response != "y"
+
     return response
             
 
@@ -74,6 +77,6 @@ while answer == "y":
 
     difference(people,max_cap)
 
-    response = decision(response)
+    answer == decision(response)
 
 
