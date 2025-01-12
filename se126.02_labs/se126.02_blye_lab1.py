@@ -45,21 +45,22 @@ def difference(people, max_cap):
 
         return answer
 
-def decision(response):
+def decision(resp):
     '''This is the function to ask the user if they would like to continue to check the program for another meeting attendance information.'''
    
     #while loop trap - ensure user provides valid value before moving on
     
-    response = input("\n\tWould you like to enter another meeting? [y/n]: ").lower()
+    #response = input("\n\tWould you like to enter another meeting? [y/n]: ").lower()
 
-    while response != "y" and response != "n":
+    while resp != "y" and resp != "n":
         print("***INVALID ENTRY!***")
-        response = input("\n\tWould you like to check another meeting? [y/n]: ").lower()
+        resp = input("\n\tWould you like to check another meeting? [y/n]: ").lower()
 
-        if response == "n":
-            response != "y"
+        #if response == "n":
+            #response != "y"
+    else:
 
-    return response
+        return resp
             
 
 
@@ -77,6 +78,9 @@ while answer == "y":
 
     difference(people,max_cap)
 
-    answer == decision(response)
+    response = input("\n\tDo you want to go again again [y/n]: ")
 
+    
+    answer = decision(response)
+print("\n\tThank you for your compliance! Have a great day!")
 
