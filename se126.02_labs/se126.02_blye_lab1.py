@@ -36,23 +36,9 @@ def clear():
 def difference(people, max_cap):
     '''This is the function that tells the difference of people in the room and the max capacity.'''
 
-    max_cap = (int(input("\n\tWhat is the maximun capacity for that room?"))) # users input for max capacity
-    people = (int(input("\n\tHow many people are attending this meeting?"))) # users input for people attending
+    diff = max_cap - people
 
-    while answer =="y":  
-    
-        if people <= max_cap: # if people is less than max capacity
-            open_seats = max_cap - people 
-
-            print(f"\n\t{open_seats} people can be added to the meeting and still meet fire regulations.") # people can be added
-
-        if people >= max_cap: #if people is greater than max capacity
-            ppl_over = people - max_cap
-            ppl_over + 1
-
-            print(f"\n\t{ppl_over} people must be removed from the meeting to meet fire regulations.") # remove people
-
-        return answer
+    return diff
 
 def decision(resp):
     '''This is the function to ask the user if they would like to continue to check the program for another meeting attendance information.'''
@@ -85,9 +71,27 @@ while answer == "y":
 
     print(input("\n\tPlease enter your meeting name:")) # asks user for meeting name
 
-    difference(people,max_cap) # calls for the differnce function
+    max_cap = (int(input("\n\tWhat is the maximun capacity for that room?"))) # users input for max capacity
+    people = (int(input("\n\tHow many people are attending this meeting?"))) # users input for people attending
 
-    response = input("\n\tDo you want to go again again [y/n]: ") # asks user if they want to check another meeting
+    difference(people,max_cap) # calls for the differnce function  
+    
+    if people <= max_cap: # if people is less than max capacity
+
+        open_seats = max_cap - people 
+
+        print(f"\n\t{open_seats} people can be added to the meeting and still meet fire regulations.") # people can be added
+
+    if people >= max_cap: #if people is greater than max capacity
+        ppl_over = people - max_cap
+
+        ppl_over + 1
+
+        print(f"\n\t{ppl_over} people must be removed from the meeting to meet fire regulations.") # remove people
+
+
+
+    response = input("\n\tDo you want to go again again [y/n]: ").lower() # asks user if they want to check another meeting
     
     answer = decision(response) # calls for the decision functions
 
