@@ -1,22 +1,20 @@
 #Robert Blye
 #SE126.02
 #in_class_lab - TextFile Handeling w/ Filters!
-#1-7-2025 [W1D2]
+#1-14-2025 [W2D1]
 
 #PROGRAM PROMPT: 
-#
+# the program is to display the amount of rooms that are over capacity and display the amount of people it is over by.
 
 
 #VARIABLE DICTIONARY:
-#
-#
-#
-#
-# 
-# 
-# 
-# 
-
+# difference - is the function that does subtraction to see how many people the room is over capacity
+# max_cap - max capacity for the room
+# people - people registered for the event
+# rooms_over - the amount of rooms over capacity
+# name - is the name of the room
+# total_records - the total amount of records being displayedd from the list
+# remaining - is the the result of the subtraction in the difference function
 
 #--------------Imports------------------
 import csv
