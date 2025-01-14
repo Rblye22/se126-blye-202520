@@ -1,6 +1,6 @@
 #Robert Blye
 #SE126.02
-#in_class_lab
+#in_class_lab - TextFile Handeling w/ Filters!
 #1-7-2025 [W1D2]
 
 #PROGRAM PROMPT: 
@@ -21,12 +21,26 @@
 #--------------Imports------------------
 import csv
 
-total_records = 0 #the total number of recors (rows) in the file
-#-------Header--------------------
-print(f"\n{'ROOM':10} \t {'NUM':3} \t {'REG'}")
-#HEADER PRINT
-print("-----------------------------------")
+#----------Functions-----------------------------
 
+def difference(max_cap, people):
+    '''This is a subtraction function'''
+    diff = max_cap - people 
+    return diff
+
+    
+#-------Header--------------------
+print(f"\n{'Name':10}    \t\t   {'MAX':3}    {'People':5}     {'OVER'}")
+#HEADER PRINT
+print("-------------------------------------------------")
+
+#--------Main Code----------------------------------
+#initialize neede counting variables
+
+total_records = 0 #the total number of recors (rows) in the file
+rooms_over = 0 #number of roooms over
+
+#----------Connected to file-----------
 
 with open("text_files/classLab2.csv") as csvfile:
 
@@ -38,21 +52,24 @@ with open("text_files/classLab2.csv") as csvfile:
 
         #print(record) #this is the list view of each record (row)
 
-        room = record [0]
-        num_ppl = int(record[1])
-        ppl_reg = int(record [2])
+        #assign each field data to a friendly var name
+    
+        name = record [0]
+        max_cap = int(record[1]) #all text data read as a string, cast as int
+        people = int(record[2])
 
-        if ppl_reg > num_ppl:
-            #num_ppl = int(num_ppl)
-            #ppl_reg = int(ppl_reg)
-            wait = (num_ppl - ppl_reg) * - 1
+        #call the fuction diff()
+        remaining = difference(people, max_cap)
 
-            print(f"{room:10.10} \t {num_ppl:15} \t {ppl_reg:2} \t {wait}")
-        '''
-        if ppl_reg > ppl_reg:
-            num_ppl = int(num_ppl)
-            ppl_reg = int(ppl_reg)
-            wait_list = num_ppl
-        '''
-#-----------disconnected from file-------------
-print(f"\n There were {total_records} rooms processed and {wait} are over the limit. \n")
+        #count and display rooms over capacity (remaining is negative)
+
+        if remaining > 0:
+            rooms_over += 1
+            print(f" {name:20}     {max_cap:5}   {people:5}    {abs(remaining):5}") # abs func or * by - 1
+
+   
+
+#----------Connected to file-----------
+
+print(f"\nRooms currently over capacity: {rooms_over}")
+print(f"Total rooms in the file: {total_records} \n\n")
