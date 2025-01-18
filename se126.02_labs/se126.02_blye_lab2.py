@@ -1,33 +1,34 @@
 # Robert Blye
 # SE126.02
 # Lab 2
-# 1-14-2025 [W2D2]
+# 1-18-2025 [W2D2]
 
 # PROGRAM PROMPT: 
-# the program is to display the amount of rooms that are over capacity and display the amount of people it is over by.
+# the program is to display the information from the text file and organize the information about the computers in the list. If the computer has a second hard drive then display that following information as well.
 
 
 # VARIABLE DICTIONARY:
-#
-#
-#
-#
-#
-#
-#
-#
-#
+# type - type of computer
+# brand - manufacturer of the computer
+# cpu - type of processor
+# ram - ram in gb
+# disk - size of hard drive
+# no_hdd - number of hard drives
+# os - operating system
+# disk2 - size of second hard drive
+# year - the year the computer was purchased
+# total-records - is the total records overall in the list 
 
 #--------------Imports------------------
 import csv
 
 total_records = 0 #the total number of recors (rows) in the file
 
-print(f"\n{'TYPE':10} \t {'BRAND':3} \t {'CPU'} \t {'RAM'} \t {'DISK'} \t {'No HDD'} \t {'2ND Disk'} \t {'OS'} \t {'YR'}")
+print(f"\n{'TYPE'} {'BRAND'} {'CPU'}  {'RAM'}  {'DISK'}  {'No HDD'}  {'2ND Disk'}  {'OS'}  {'YR'}")
 #HEADER PRINT
-print("-----------------------------------")
+print("----------------------------------------------------")
 
-with open("") as csvfile:
+with open("text_files/filehandling.csv") as csvfile:
     #indent 1 level! (new block)
 
     #allow processor to read the file data
@@ -41,16 +42,26 @@ with open("") as csvfile:
 
         print(record) #this is the list view of each record (row)
 
-        type = record [0]
+        type = record[0]
         brand = record[1]
-        cpu = record [2]
-        ram =  record [3]
-        one_disk = record [4]
-        no_hdd = record [5]
-        sec_disk = record [6]
-        os = record [7]
-        year = record [8]
+        cpu = record[2]
+        ram =  record[3]
+        one_disk = record[4]
+        no_hdd = record[5]
 
-        print(f"{type:10} \t {brand:3} \t {cpu:3} \t {ram:3} \t {one_disk:3} \t {no_hdd:3} \t {sec_disk:3} \t {os:3} \t {year:3}")
+        if no_hdd == 1: # if it doesnt have a second drive
+            os = record[6]
+            year = record[7]
+
+            print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {os:10} {year:10}")
+
+        if no_hdd == 2: # if it has a second drive
+            disk2 = record[6]
+            os = record[7]
+            year = record[8]
+
+            print(f"{type:5} {brand:5} {cpu:5} {ram:5} {one_disk:5} {no_hdd:5} {disk2:5} {os:5} {year:5}")
+ # format wont line up how i want it to. i tried \t and tried tweeking the numbers and cant seem to figure it out. the short line still stays shorter than the longer line
+
 #-----------disconnected from file-------------
 print(f"\n TOTAL RECORDS: {total_records}\n")
