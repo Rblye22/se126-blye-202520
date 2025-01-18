@@ -50,9 +50,10 @@ with open("text_files/filehandling.csv") as csvfile:
         no_hdd = record[5]
 
         if no_hdd == 1: # if it doesnt have a second drive
-            os = record[6]
+            os = record[6] 
             year = record[7]
 
+            #print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10}\t {no_hdd:10}\t {os:10}\t {year:10}")
             print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {os:10} {year:10}")
 
         if no_hdd == 2: # if it has a second drive
@@ -60,7 +61,7 @@ with open("text_files/filehandling.csv") as csvfile:
             os = record[7]
             year = record[8]
 
-            print(f"{type:5} {brand:5} {cpu:5} {ram:5} {one_disk:5} {no_hdd:5} {disk2:5} {os:5} {year:5}")
+            print(f"{type:3} {brand:3} {cpu:3} {ram:3} {one_disk:3} {no_hdd:3} {disk2:3} {os:3} {year:3}")
  # format wont line up how i want it to. i tried \t and tried tweeking the numbers and cant seem to figure it out. the short line still stays shorter than the longer line
 
 #-----------disconnected from file-------------
