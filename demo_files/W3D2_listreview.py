@@ -9,7 +9,7 @@ import csv
 
 #---------Main Executing Code------------
 
-total_records = 0\
+total_records = 0
 
 #create a list for every potenial field
 
