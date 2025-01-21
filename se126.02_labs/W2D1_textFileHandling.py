@@ -5,7 +5,7 @@ import csv
 
 total_records = 0 #the total number of recors (rows) in the file
 
-#tep 2
+#step 2
 #connecting to the files path - switch \ to /
 #copy relative path of file being imported
 
