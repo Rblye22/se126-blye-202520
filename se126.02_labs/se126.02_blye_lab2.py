@@ -53,7 +53,7 @@ with open("text_files/filehandling.csv") as csvfile:
             year = record[7]
 
             #print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10}\t {no_hdd:10}\t {os:10}\t {year:10}")
-            print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {os:10} {year:10}")
+            print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {disk2:10} {os:10} {year:10}")
         if no_hdd == "2": # if it has a second drive
             disk2 = record[6]
             os = record[7]
