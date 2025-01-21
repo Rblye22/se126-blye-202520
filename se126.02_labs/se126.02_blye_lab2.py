@@ -64,3 +64,4 @@ with open("text_files/filehandling.csv") as csvfile:
 
 #-----------disconnected from file-------------
 print(f"\n TOTAL RECORDS: {total_records}\n")
+#test

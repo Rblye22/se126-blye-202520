@@ -69,4 +69,4 @@ for i in range(0,len (avg)):
     #calculate the average
     class_avg = total_avg / len(avg)
     print(f"\n THE CLASS AVERAGE of these {len(avg)} students is : {class_avg:.2f}")
-    #test
+    #test1
