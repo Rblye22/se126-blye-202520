@@ -84,12 +84,14 @@ for index in range (0, len(year)): #len() --> length of collection, returns # of
     if year <= 16:
         
         if type == "D":
+            d = d_mon + 1
             print(f"$2,000")
             
         if type == "L":
+            l = l_mon
             print(f"$ 1,500")
 
-    print(f"INDEX {index:3} : {type[index]:10} {brand[index]:10}  {cpu[index]:10}  {ram[index]:10}  {one_disk[index]:10}  {no_hdd[index]:10} {disk2[index]:10} {os[index]:10} {year[index]:10}")
+        print(f"INDEX {index:3} : {type[index]:10} {brand[index]:10}  {cpu[index]:10}  {ram[index]:10}  {one_disk[index]:10}  {no_hdd[index]:10} {disk2[index]:10} {os[index]:10} {year[index]:10}")
 
 
 
