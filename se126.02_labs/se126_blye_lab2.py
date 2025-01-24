@@ -54,13 +54,8 @@ with open("text_files/filehandling.csv") as csvfile:
 
             #print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10}\t {no_hdd:10}\t {os:10}\t {year:10}")
             print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {disk2:10} {os:10} {year:10}")
-        if no_hdd == "2": # if it has a second drive
+        elif no_hdd == "2": # if it has a second drive
             disk2 = record[6]
             os = record[7]
             year = record[8]
-
             print(f"{type:10} {brand:10} {cpu:10} {ram:10} {one_disk:10} {no_hdd:10} {disk2:10} {os:10} {year:10}")
- # format wont line up how i want it to. i tried \t and tried tweeking the numbers and cant seem to figure it out. the short line still stays shorter than the longer line
-
-#-----------disconnected from file-------------
-print(f"\n TOTAL RECORDS: {total_records}\n")
