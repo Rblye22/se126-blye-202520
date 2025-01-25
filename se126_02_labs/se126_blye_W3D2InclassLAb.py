@@ -35,12 +35,13 @@ print("-------------------------------------------------------------------------
 type = []
 brand = []
 cpu = []
-ram =  []
+ram = []
 one_disk = []
 no_hdd = []
 disk2 = []
-os = []
+osy = []
 year = []
+
 desk = 0
 lap = 0
 com_total = 0
@@ -60,28 +61,23 @@ with open("text_files/filehandling.csv") as csvfile:
         one_disk.append(rec[4])
         no_hdd.append(int(rec[5]))
 
-        desk = 0 # desktops
-        lap = 0 # laptops
-        com_total = 0 # overall cost
-        d_total = desk * 2000 # mult to get total cost for desktops
-        l_total = lap * 1500 # mult to get total cost for laptops
 
-        if no_hdd == 1: # if it doesnt have a second drive
+        if rec[5] == 1: # if it doesnt have a second drive
             disk2.append(" ")
-            os.append(rec[6])
-            year.append(rec[7])
+            osy.append(rec[6])
+            year.append(int(rec[7]))
 
            
-        elif no_hdd == 2: # if it has a second drive
+        elif rec[5] == 2: # if it has a second drive
             disk2.append(rec[6])
-            os.append(rec[7])
-            year.append(rec[8])
+            osy.append(rec[7])
+            year.append(int(rec[8]))
 
     for index in range(0, len(type)):
         #index for computer types
     
         if year[index] <= 16:
-            com_total = d_total + l_total # total cost to replace all computers if they choose to replace both desktops and laptops
+            com_total = com_total +1
 
             if type[index] == "D":  # number of desks tops that need to be replaced
                 desk += 1
@@ -89,7 +85,7 @@ with open("text_files/filehandling.csv") as csvfile:
             elif type[index] == "L":  # number of laptops that need to be replaced
                 lap += 1
 
-        print(f"{type[index]:10} {brand[index]:10} {cpu[index]:10} {ram[index]:10} {one_disk[index]:10} {no_hdd[index]:10} {disk2[index]:10} {os[index]:10} {year[index]:10}") # list of computers
+        print(f"{type[index]:10} {brand[index]:10} {cpu[index]:10} {ram[index]:10} {one_disk[index]:10} {no_hdd[index]:10} {disk2[index]:10} {osy[index]:10} {year[index]:10}") # list of computers
         
 d_total = desk * 2000 # cost to replace desktops made before 2016, num of desktops mult. by 2000
 l_total = lap * 1500  # cost to replace laptops made before 2016, num of laptops mult by 1500
@@ -101,6 +97,6 @@ print(f"To replace {desk} desktops it will cost ${d_total}") # showing price to 
 print(f"To replace {lap} laptops it will cost ${l_total}") # showing price to replace laptops
 
 input("\n\tPress Enter To Continue...\n")
-print(f"It will cost of total of ${com_total} to replace all systems.")
+print(f"It will cost of total of ${d_total + l_total} to replace all systems.")
 
 
