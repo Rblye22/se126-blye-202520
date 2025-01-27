@@ -6,7 +6,6 @@
 # PROGRAM PROMPT: 
 # the program is to display voter information of the number of individuals not eligible to register, number of individuals who are old enough to vote but have not registered, number of individuals who are eligible to vote but did not vote, number of individuals who did vote, and the number of records processed.
 
-
 # VARIABLE DICTIONARY:
 # id - id number
 # age - voters age
@@ -30,14 +29,14 @@ vote = []
 
 total_rec = 0
 not_eligible = 0
-eligible = 0
 not_reg = 0
 ppl_reg = 0
 voted = 0
 reg_vote = 0
 
 
-print("print(f'ID' 'AGE' 'registered' 'vot' ")
+print(f"ID\t  AGE\t  REGISTERED\tVOTE ")
+print("-------------------------------------")
 with open("text_files/voters_202040.csv") as csvfile:
 
     #allow processor to read the file data
@@ -68,6 +67,8 @@ with open("text_files/voters_202040.csv") as csvfile:
             
         print(f"{id[index]:10} {age[index]:10} {registered[index]:10} {vote[index]:10}")
 
+        
+print("-------------------------------------")
     #Number of individuals not eligible to register.
 print(f"There are {not_eligible} people who are not eligible to vote.") 
 
