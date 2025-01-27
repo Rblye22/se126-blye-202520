@@ -66,3 +66,80 @@ for i in range(0, len(fName)):
 print("-------------------------------------------------------------------------")
 
 print(f"There are {len(fName)} Students in the file.")
+
+
+# Write a program that allows users repeaded searches
+
+print("\n\n Welcome to the Student Search Program\n\n")
+
+answer = input("would you like to begin searching? [y/n]: ").lower()
+
+while answer == "y":
+
+    #get search type from user
+    print("\tSearch Menu Options")
+    print("1. Search by LAST NAME")
+    print("2. Search by LETTER GRADE")
+    print("3. Exit")
+
+    search_type = input("Enter your search type [1-3]: ")
+
+    if search_type == "1":
+        print("SEARCH BY LAST NAME")
+        
+        found = -1 #invalid index, will check later to see if a student has been found
+
+        #get search item from user
+        search_name = input("Enter the LAST NAME of the student you are searching for: ")
+
+        #perform search
+        for i in range(0, len(lName)):
+            # the for loop allows "sequence" party -> to being to end
+            if search_name.lower() == lName[i].lower():  # .lower() still works
+                #theIF STATEMNEt allows for "search" part
+                found = i # make found the current index, can be used later to display
+
+        #display the results
+        if found!= -1:
+            #last name has been found and display data
+            #print(f"{fName[i]:10}   {lName[i]:10}   {test1[i]:3}   {test2[i]:3}   {test3[i]:3}   {num_avg[i]:3} {let_avg[i]}") i = 20 and will give out of range
+            print(f"Your search for {search_name} was Found")
+            print(f"{fName[found]:10}   {lName[found]:10}   {test1[found]:3}   {test2[found]:3}   {test3[found]:3}   {num_avg[found]:3} {let_avg[found]}")
+        else:
+            print(f"Your search for {search_name} was *NOT* FOUND!")
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
+        
+        
+    elif search_type == "2":
+        print("\tSearch by LETTER GRADE")
+        found = [] #created empty list to gather and store index values
+
+        #get search item from user
+        search_grade = input("Enter the LAST NAME of the student you are searching for: ")
+
+        #perform search
+        for i in range(0, len(let_avg)):
+            # the for loop allows "sequence" party -> to being to end
+            if search_grade.upper() == let_avg[i]:
+                #theIF STATEMNEt allows for "search" part
+                found.append() # make found the current index, can be used later to display
+
+        #display the results
+        if not found: # this means list is empty
+            print(f"Your search for {search_name} was *NOT* FOUND!")
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
+
+        else:
+            print(f"Your search for {search_name} was Found")
+
+            #found is a list with mult. pieces of dtat - must use a for loop to see all
+            for i in range(0, len(found)):
+                
+                print(f"{fName[found[i]]:10}   {lName[found[i]]:10}   {test1[found[i]]:3}   {test2[found[i]]:3}   {test3[found[i]]:3}   {num_avg[found[i]]:3} {let_avg[found[i]]}")
+
+    elif search_type == "3":
+        print("EXIT")
+    else:...
+
+    if search_type =="1" or search_type =="2": # only user doesnt specify 3 to exit
+        answer = input("would you like to search again? [y/n]: ").lower()

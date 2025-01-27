@@ -101,5 +101,3 @@ print(f"To replace {lap} laptops it will cost ${l_total}") # showing price to re
 
 input("\n\tPress Enter To Continue...\n")
 print(f"It will cost of total of ${d_total + l_total} to replace all systems.")
-
-
