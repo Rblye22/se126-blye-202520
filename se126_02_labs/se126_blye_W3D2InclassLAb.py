@@ -62,30 +62,33 @@ with open("text_files/filehandling.csv") as csvfile:
         no_hdd.append(int(rec[5]))
 
 
-        if rec[5] == 1: # if it doesnt have a second drive
+        if rec[5] == "1": # if it doesnt have a second drive
             disk2.append(" ")
             osy.append(rec[6])
             year.append(int(rec[7]))
 
            
-        elif rec[5] == 2: # if it has a second drive
+        elif rec[5] == "2": # if it has a second drive
             disk2.append(rec[6])
             osy.append(rec[7])
             year.append(int(rec[8]))
 
-    for index in range(0, len(year)):
-        #index for computer types
-    
-        if year[index] <= 16:
-            com_total = com_total +1  # math to get total cost
+for index in range(0, len(year)):
+    #index for computer types
 
-            if type[index] == "D":  # number of desks tops that need to be replaced
-                desk += 1
-                
-            elif type[index] == "L":  # number of laptops that need to be replaced
-                lap += 1
+    if year[index] <= 16:
+        print("year check")
+        com_total = com_total +1  # math to get total cost
 
-        print(f"{type[index]:10} {brand[index]:10} {cpu[index]:10} {ram[index]:10} {one_disk[index]:10} {no_hdd[index]:10} {disk2[index]:10} {osy[index]:10} {year[index]:10}") # list of computers
+        if type[index] == "D":  # number of desks tops that need to be replaced
+            print("desk check")
+            desk += 1
+            
+        elif type[index] == "L":  # number of laptops that need to be replaced
+            print("lap check")
+            lap += 1
+
+    print(f"{type[index]:10} {brand[index]:10} {cpu[index]:10} {ram[index]:10} {one_disk[index]:10} {no_hdd[index]:10} {disk2[index]:10} {osy[index]:10} {year[index]:10}") # list of computers
         
 d_total = desk * 2000 # cost to replace desktops made before 2016, num of desktops mult. by 2000
 l_total = lap * 1500  # cost to replace laptops made before 2016, num of laptops mult by 1500
