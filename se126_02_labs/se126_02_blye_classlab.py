@@ -20,7 +20,8 @@
 # let - letter grade for avg test scores
 # found - variable used for condionals. It is used as a key if data has been found in the index
 # num - the number of the avg grade 
-
+# total_avg - total average for the class
+# sum - built in fuction that does the math
 #----imports-------------------------------
 
 import csv
@@ -68,6 +69,10 @@ with open ("text_files/class_grades.csv") as csvfile:
 
 num_avg = [] # holds each students num avg of test scores
 let_avg = [] # holds each students let acg of test scores
+class_avg = [] # holds class average
+#header
+print(" First Name\tLast Name\t Test 1\t Test 2\t Test3\t Average Score\t   Average Letter Grade")
+print("-------------------------------------------------------------------------------------------")
 
 for i in range(0,len(firstName)):
 
@@ -78,17 +83,20 @@ for i in range(0,len(firstName)):
     l = letter(a) # reurn value of letter() stored to i
     let_avg.append(l) 
 
+    class_avg = sum(num_avg) / len(firstName)
+    
 # process the lists to diaplay all data back to the user
 for i in range(0, len(firstName)):
-    print(f"{firstName[i]:10}   {lastName[i]:10}   {test1[i]:3}   {test2[i]:3}   {test3[i]:3}   {num_avg[i]:6.2f}\t {let_avg[i]:6}")
+    print(f"{firstName[i]:10}       {lastName[i]:10} \t  {test1[i]:3}     {test2[i]:3}     {test3[i]:3}\t  {num_avg[i]:6.2f}\t\t\t{let_avg[i]:6}")
 
-print("-------------------------------------------------------------------------")
+print("-------------------------------------------------------------------------------------------")
 
-print(f"There are {len(firstName)} Students in the file.")
+print(f"\nThere are {len(firstName)} Students in the file.\n")
+print(f"The class average grade is {class_avg:4.2f}")
 
 # Write a program that allows users repeaded searches
 
-print("\n\n Welcome to the Student Search Program\n\n")
+print("\n Welcome to the Student Search Program\n")
 
 answer = input("would you like to begin searching? [y/n]: ").lower() #asking user to begin
 
@@ -181,6 +189,3 @@ while answer == "y":
     
     if search_type == "1" or search_type == "2" or search_type == "3": # only user doesnt specify 3 to exit
         answer = input("would you like to search again? [y/n]: ").lower()
-
-        
-        
