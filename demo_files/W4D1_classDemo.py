@@ -61,7 +61,7 @@ for i in range(0,len(fName)):
 
 #process the lists to diaplay all data back to the user
 for i in range(0, len(fName)):
-    print(f"{fName[i]:10}   {lName[i]:10}   {test1[i]:3}   {test2[i]:3}   {test3[i]:3}   {num_avg[i]:3} {let_avg[i]}")
+    print(f"{fName[i]:10}   {lName[i]:10}   {test1[i]:3}   {test2[i]:3}   {test3[i]:3}   {num_avg[i]:0.2f} {let_avg[i]}")
 
 print("-------------------------------------------------------------------------")
 
