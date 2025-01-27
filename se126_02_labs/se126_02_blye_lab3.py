@@ -18,11 +18,9 @@
 # not_reg - not registered to vote
 # ppl_ reg - people registered to vote but did not vote
 # voted - the number of people who voted
-# 
 
 #--------------Imports------------------
 import csv
-
 
 #-----initilizing------
 id = []
@@ -38,6 +36,8 @@ ppl_reg = 0
 voted = 0
 reg_vote = 0
 
+
+print("print(f'ID' 'AGE' 'registered' 'vot' ")
 with open("text_files/voters_202040.csv") as csvfile:
 
     #allow processor to read the file data
@@ -45,45 +45,37 @@ with open("text_files/voters_202040.csv") as csvfile:
 
     for rec in file:
 
-        id.append(int(rec[0]))
-        age.append(int(rec[1]))
+        id.append(rec[0])
+        age.append(rec[1])
         registered.append(rec[2])
         vote.append(rec[3])
 
     for index in range(0, len(id)):
 
-        if age[index] <= 18:
+        if age[index] < "18":
             not_eligible += 1
-
-        elif age[index] >= 18:
-            eligible += 1
         
-        while eligible:
-
-            if registered[index] == "N":
-                not_reg += 1
+        elif registered[index] == "N":
+            not_reg += 1
             
-            if registered[index] =="Y":
-                reg_vote += 1
+        elif registered[index] =="Y" and vote[index] == "N":
+            reg_vote += 1
 
-        while registered[index] == "Y":
-                
-            if vote[index] == "N":
-                ppl_reg +=1
+        elif vote[index] == "Y":
+            voted +=1
 
-            if vote[index] == "Y":
-                voted +=1
+        total_rec += 1
             
         print(f"{id[index]:10} {age[index]:10} {registered[index]:10} {vote[index]:10}")
 
-#Number of individuals not eligible to register.
+    #Number of individuals not eligible to register.
 print(f"There are {not_eligible} people who are not eligible to vote.") 
 
 #Number of individuals who are old enough to vote but have not registered.
 print(f"There are {not_reg} people not registered to vote.")
 
 #Number of individuals who are eligible to vote but did not vote.
-print(f"There are {ppl_reg} people that are eligible to vote but did not vote.")
+print(f"There are {reg_vote} people that are eligible to vote but did not vote.")
 
 #Number of individuals who did vote.
 print(f"There was {voted} people who voted")
