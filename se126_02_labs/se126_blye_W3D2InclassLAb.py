@@ -73,11 +73,11 @@ with open("text_files/filehandling.csv") as csvfile:
             osy.append(rec[7])
             year.append(int(rec[8]))
 
-    for index in range(0, len(type)):
+    for index in range(0, len(year)):
         #index for computer types
     
         if year[index] <= 16:
-            com_total = com_total +1
+            com_total = com_total +1  # math to get total cost
 
             if type[index] == "D":  # number of desks tops that need to be replaced
                 desk += 1
