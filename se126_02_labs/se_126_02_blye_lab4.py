@@ -26,10 +26,97 @@
 #----imports-------------------------------
 
 import csv
+import random
 
 #--Initalize for function------------------
+dep = 0
+ext = 0
 
 #----Functions-----------------------------
+def houseA(house):
+    if house >= 100 or house <= 199:
+        print("House Stark")
+    
+    if house >= 200 or house <= 299:
+        print("House Targaryen")
+
+    if house >= 300 or house <= 399:
+        print("House Tully ")
+
+    if house >= 400 or house <=499:
+        print("House Lannister")
+
+    if house >=500 or house <= 599:
+        print("House Baratheon")
+    
+    if house >= 600 or house <= 699:
+        print("The Night’s Watch")
+
+    if house <100 or house >= 700:
+        house = "Error"
+
+    return house
+    
+
+
+def depart():
+    if dep >= 100 or dep <= 199:
+        print("Research and Development")
+    
+    if dep >= 200 or dep <= 299:
+        print("Marketing")
+
+    if dep >= 300 or dep <= 399:
+        print("Human Resources")
+
+    if dep >= 400 or dep <= 499:
+        print("Accounting")
+
+    if dep >= 500 or dep <= 599:
+        print("Sales ")
+
+    if dep >= 600 or dep <= 600:
+        print("Auditing ")
+
+    return dep
+
+
+def phone(ext):
+    for i in range(100, 199):
+        ext1 = random.randit(100, 199)
+        print(f"The phone extension is {ext1}")
+    
+    for i in range(200, 299):
+        ext2 = random.randit(200, 299)
+        print(f"The phone extension is {ext2}")
+
+    for i in range(300, 399):
+        ext3 = random.randit(300, 399)
+        print(f"The phone extension is {ext3}")
+
+    for i in range(400, 499):
+        ext4 = random.randit(400, 499)
+        print(f"The phone extension is {ext4}")
+
+    for i in range(500, 599):
+        ext5 = random.randit(500, 599)
+        print(f"The phone extension is {ext5}")
+
+    for i in range(600, 699):
+        ext6 = random.randit(600, 699)
+        print(f"The phone extension is {ext6}")
+
+    else:
+        ext = "ERROR" 
+
+    return ext # 'let' value replaces the func call in the main executing code
+
+def email(scrnName):
+    scrnName = []
+    email_add = scrnName + "@westeros.net"
+    
+    return email_add
+
 
 
 #--Main Executing Code----------------------------
@@ -41,6 +128,9 @@ age = []
 scrnName =[]
 house = []
 
+#--EMAIL ADDRESS-----------------------------------------
+
+
 
 # opens the text file
 with open ("text_files/got_emails.csv") as csvfile:
@@ -51,27 +141,144 @@ with open ("text_files/got_emails.csv") as csvfile:
         fName.append(rec[0])
         lName.append(rec[1])
         age.append(int(rec[2]))
-        scrnName.append(int(rec[3]))
-        house.append(int(rec[4]))
+        scrnName.append(rec[3])
+        house.append(rec[4])
+        email_add.append(rec[5])
+        dep.append(rec[6])
+        ext.append(rec[7])
     #--disconected from file-----------------------------
 
-#--EMAIL ADDRESS-----------------------------------------
-email_add = scrnName + "@westeros.net"
 
 
-#--DEPARTMEMT--------------------------------------------
-# HOUSE STARK = Research and Development
-# HOUSE TARGARYEN = Marketing
-# HOUSE TULLY = Human Resources
-# HOUSE LANNISTER = Accounting
-# HOUSE BARATHEON = Sales
-# THE NIGHT WATCH = Auditing
 
-#--EXTENSIONS---------------------------------------------
 
-# HOUSE STARK = ext range 100 - 199
-# HOUSE TARGARYEN = ext range 200 - 299
-# HOUSE TULLY = ext range 300 - 399
-# HOUSE LANNISTER = ext range 400 - 499
-# HOUSE BARATHEON = ext range 500 - 599
-# THE NIGHT WATCH = ext range 600 - 699
+# process the lists to diaplay all data back to the user
+for i in range(0, len(fName)):
+    print(f"{fName[i]:10}   {lName[i]:10}   {age[i]:3}   {scrnName[i]:3}   {house[i]:3}   {email_list[i]:6.2f} {dep[i]} {ext[i]}")
+
+print("-------------------------------------------------------------------------------------------")
+
+# Write a program that allows users repeaded searches
+
+print("Welcome to the employee database!")
+
+answer = input("would you like to begin searching? [y/n]: ").lower() #asking user to begin
+
+while answer == "y":
+
+    # get search type from user
+    print("\tSearch Menu Options") 
+    print("1. Search by FIRST NAME") # search by first name
+    print("2. Search by PHONE EXTENSION") # search by phone extension
+    print("2. Search by LAST NAME") # search by last name
+    print("3. Search by DEPARTMENT") # search by department
+    print("4. Exit") # exit program
+
+    search_type = input("Enter your search type [1-5]: ") # users input of choice
+
+    if search_type == "1":
+        print("SEARCH BY FIRST NAME") 
+        
+        found = -1 # invalid index, will check later to see if a student has been found
+
+        # get search item from user
+        search_name = input("Enter the LAST NAME of the employee you are searching for: ")
+
+        # perform search
+        for i in range(0, len(fName)):
+            if search_name.lower() == fName[i].lower():  
+                found = i # make found the current index, can be used later to display
+
+        # display the results
+        if found!= -1:
+            # first name has been found and display data
+            print(f"Your search for {search_name} was Found")
+            print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
+        else:
+            print(f"Your search for {search_name} was *NOT* FOUND!") # invalid response
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!") # case sensative
+
+    if search_type == "2":
+        print("SEARCH BY Phone Extension")
+        
+        found = -1 #invalid index, will check later to see if a student has been found
+
+        # get search item from user
+        search_name = input("Enter the FIRST NAME of the student you are searching for: ")
+
+        # perform search
+        for i in range(0, len(age)):
+            if search_name == ext[i]:
+                found = i # make found the current index, can be used later to display
+
+        #display the results
+        if found!= -1:
+            # First name has been found and display data
+            print(f"Your search for {search_name} was Found")
+            print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
+        else:
+            print(f"Your search for {search_name} was *NOT* FOUND!") # invalid response
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!") # case sensative
+        
+    elif search_type == "3":
+        print("\tSearch by LAST NAME")
+        found = [] #created empty list to gather and store index values
+
+        # get search item from user
+        search_lName = input("Enter the grade you wish to search for: ")
+
+        # perform search
+        for i in range(0, len(lName)):
+            # the for loop allows "sequence" party -> to being to end
+            if search_lName.lower() == lName[i]:
+                # the IF STATEMNEt allows for "search" part
+                found.append(i) # make found the current index, can be used later to display
+
+        # display the results
+        if not found: # this means list is empty
+            print(f"Your search for {search_lName} was *NOT* FOUND!")
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
+
+        else:
+            print(f"Your search for {search_lName} was Found")
+
+            # found is a list with mult. pieces of dtat - must use a for loop to see all
+            for i in range(0, len(found)):
+                # display list
+                print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
+
+    elif search_type == "4":
+        print("\tSearch by DEPARTMENT")
+        found = [] #created empty list to gather and store index values
+
+        # get search item from user
+        search_grade = input("Enter the Department you wish to search for: ")
+
+        # perform search
+        for i in range(0, len(age)):
+            # the for loop allows "sequence" party -> to being to end
+            if search_dep.lower() == dep[i].lower():
+                # the IF STATEMNEt allows for "search" part
+                found.append(i) # make found the current index, can be used later to display
+
+        # display the results
+        if not found: # this means list is empty
+            print(f"Your search for {search_dep} was *NOT* FOUND!")
+            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
+
+        else:
+            print(f"Your search for {search_dep} was Found")
+
+            # found is a list with mult. pieces of dtat - must use a for loop to see all
+            for i in range(0, len(found)):
+                # display list
+                print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
+
+
+    # exit choice from menu 
+    elif search_type == "5":
+        answer = "n"
+        print("Thank you for using the program!")
+    
+    if search_type == "1" or search_type == "2" or search_type == "3": # only user doesnt specify 3 to exit
+        answer = input("would you like to search again? [y/n]: ").lower()
