@@ -29,8 +29,9 @@ import csv
 import random
 
 #--Initalize for function------------------
-dep = 0
-ext = 0
+dep = []
+ext = []
+email_add = []
 
 #----Functions-----------------------------
 def houseA(house):
@@ -78,7 +79,7 @@ def depart():
     if dep >= 600 or dep <= 600:
         print("Auditing ")
 
-    return dep
+    return dep[i]
 
 
 def phone(ext):
@@ -109,15 +110,12 @@ def phone(ext):
     else:
         ext = "ERROR" 
 
-    return ext # 'let' value replaces the func call in the main executing code
+    return ext[i]
 
-def email(scrnName):
-    scrnName = []
-    email_add = scrnName + "@westeros.net"
-    
-    return email_add
+def emails():
+    email_add = scrnName[i]+ "@Westeros.net"
 
-
+    return email_add[i]
 
 #--Main Executing Code----------------------------
 
@@ -127,6 +125,10 @@ lName = []
 age = []
 scrnName =[]
 house = []
+email_add = []
+dep = []
+ext = []
+
 
 #--EMAIL ADDRESS-----------------------------------------
 
@@ -143,18 +145,9 @@ with open ("text_files/got_emails.csv") as csvfile:
         age.append(int(rec[2]))
         scrnName.append(rec[3])
         house.append(rec[4])
-        email_add.append(rec[5])
-        dep.append(rec[6])
-        ext.append(rec[7])
+        
     #--disconected from file-----------------------------
 
-
-
-
-
-# process the lists to diaplay all data back to the user
-for i in range(0, len(fName)):
-    print(f"{fName[i]:10}   {lName[i]:10}   {age[i]:3}   {scrnName[i]:3}   {house[i]:3}   {email_list[i]:6.2f} {dep[i]} {ext[i]}")
 
 print("-------------------------------------------------------------------------------------------")
 
@@ -170,32 +163,32 @@ while answer == "y":
     print("\tSearch Menu Options") 
     print("1. Search by FIRST NAME") # search by first name
     print("2. Search by PHONE EXTENSION") # search by phone extension
-    print("2. Search by LAST NAME") # search by last name
-    print("3. Search by DEPARTMENT") # search by department
-    print("4. Exit") # exit program
+    print("3. Search by LAST NAME") # search by last name
+    print("4. Search by DEPARTMENT") # search by department
+    print("5. Exit") # exit program
 
-    search_type = input("Enter your search type [1-5]: ") # users input of choice
+    search_type = input("Enter your search type [1-5]: ") 
 
     if search_type == "1":
         print("SEARCH BY FIRST NAME") 
         
-        found = -1 # invalid index, will check later to see if a student has been found
+        found = -1 
 
         # get search item from user
-        search_name = input("Enter the LAST NAME of the employee you are searching for: ")
+        search_fName = input("Enter the LAST NAME of the employee you are searching for: ").lower()
 
         # perform search
         for i in range(0, len(fName)):
-            if search_name.lower() == fName[i].lower():  
-                found = i # make found the current index, can be used later to display
+            if search_fName.lower() == fName[i].lower():  
+                found = i # make found the current index
 
         # display the results
         if found!= -1:
             # first name has been found and display data
-            print(f"Your search for {search_name} was Found")
+            print(f"Your search for {search_fName} was Found")
             print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
         else:
-            print(f"Your search for {search_name} was *NOT* FOUND!") # invalid response
+            print(f"Your search for {search_fName} was *NOT* FOUND!") # invalid response
             print(f"THIS is a cAsE sensative program - check your spelling and try again!") # case sensative
 
     if search_type == "2":
@@ -204,7 +197,7 @@ while answer == "y":
         found = -1 #invalid index, will check later to see if a student has been found
 
         # get search item from user
-        search_name = input("Enter the FIRST NAME of the student you are searching for: ")
+        search_name = input("Enter the phone extension you are searching for: ")
 
         # perform search
         for i in range(0, len(age)):
@@ -225,7 +218,7 @@ while answer == "y":
         found = [] #created empty list to gather and store index values
 
         # get search item from user
-        search_lName = input("Enter the grade you wish to search for: ")
+        search_lName = input("Enter the department you wish to search for: ")
 
         # perform search
         for i in range(0, len(lName)):
@@ -252,7 +245,7 @@ while answer == "y":
         found = [] #created empty list to gather and store index values
 
         # get search item from user
-        search_grade = input("Enter the Department you wish to search for: ")
+        search_dep = input("Enter the Department you wish to search for: ")
 
         # perform search
         for i in range(0, len(age)):
