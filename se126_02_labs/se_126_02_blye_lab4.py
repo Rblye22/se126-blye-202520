@@ -1,121 +1,42 @@
 # Robert Blye
 # SE126.02
 # Lab 4
-# 1-28-25
+# 1-31-25
 
-# PROGRAM PROMPT: Write a program that utilizes the got_emails.csv file. Store the file data into 1D parallel lists, then use the information in the lists to assign additional data to each employee. Use the tables below to assign each employee in the file a unique email address, a department, and a unique phone extension. When you are complete, display the following data for each employee (first name, last name, department, email, and phone extension) to the user. Use the following field width guide to avoid unaligned field displays:Once you have completed populating all eight parallel lists and displaying the five required back to the user (and in the same Python file), create and write the following data for each employee to a file named westeros.csv: first name, last name, email, department, and phone extension. note: each employee’s data should be on its own record (row) within the newly created file. You will most likely end up with an extra empty line at the end of the file (this is okay for this lab as we will not be reprocessing the data found in this new file). Once the file is ready, close it and alert the user via a displayed message. Also tell them how many employees are in the file, and the total count of employees for each department. 
-
-# use this display to print - print(f"{'FIRST':8} {'LAST':10} {'EMAIL':30} {'DEPARTMENT':23} {'EXT':3}")
+# PROGRAM PROMPT: utilize the got_emails.csv file. Store the file data into 1D parallel lists, then use the information in the lists to assign additional data to each employee. Use the tables below to assign each employee in the file a unique email address, a department, and a unique phone extension. When you are complete, display the following data for each employee (first name, last name, department, email, and phone extension) to the user. Once you have completed populating all eight parallel lists and displaying the five required back to the user, create and write the following data for each employee to a file named westeros.csv: first name, last name, email, department, and phone extension. Once the file is ready, close it and alert the user via a displayed message. Also tell them how many employees are in the file, and the total count of employees for each department. 
 
 # VARIABLE DICTIONARY:
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+# clear() = clear the display terminal
+# fName = employees first name
+# lName = employees last name
+# age = employess age
+# scrnName = employees screen name
+# house = employees house of allegience
+# email_list = the list of employee emails
+# email = employee email address
+# dep = employees department
+# phone_ext = employees phone extension
+# ext =  used to assign random employee phone extension
+# total_rec =  total number of records
+# res_total = total of employees in Research & Development
+# m_total = total of employees in Marketing
+# h_total = total of employees in Human Resources
+# acc_total = total of employees in Accounting
+# s_total = total of employees in Sales
+# aud_total = total of employees in Auditing
+# i = index
 
 #----imports-------------------------------
-
+import time
 import csv
 import random
+import os
 
-#--Initalize for function------------------
-dep = []
-ext = []
-email_add = []
-
-#----Functions-----------------------------
-def houseA(house):
-    if house >= 100 or house <= 199:
-        print("House Stark")
-    
-    if house >= 200 or house <= 299:
-        print("House Targaryen")
-
-    if house >= 300 or house <= 399:
-        print("House Tully ")
-
-    if house >= 400 or house <=499:
-        print("House Lannister")
-
-    if house >=500 or house <= 599:
-        print("House Baratheon")
-    
-    if house >= 600 or house <= 699:
-        print("The Night’s Watch")
-
-    if house <100 or house >= 700:
-        house = "Error"
-
-    return house
-    
-
-
-def depart():
-    if dep >= 100 or dep <= 199:
-        print("Research and Development")
-    
-    if dep >= 200 or dep <= 299:
-        print("Marketing")
-
-    if dep >= 300 or dep <= 399:
-        print("Human Resources")
-
-    if dep >= 400 or dep <= 499:
-        print("Accounting")
-
-    if dep >= 500 or dep <= 599:
-        print("Sales ")
-
-    if dep >= 600 or dep <= 600:
-        print("Auditing ")
-
-    return dep[i]
-
-
-def phone(ext):
-    for i in range(100, 199):
-        ext1 = random.randit(100, 199)
-        print(f"The phone extension is {ext1}")
-    
-    for i in range(200, 299):
-        ext2 = random.randit(200, 299)
-        print(f"The phone extension is {ext2}")
-
-    for i in range(300, 399):
-        ext3 = random.randit(300, 399)
-        print(f"The phone extension is {ext3}")
-
-    for i in range(400, 499):
-        ext4 = random.randit(400, 499)
-        print(f"The phone extension is {ext4}")
-
-    for i in range(500, 599):
-        ext5 = random.randit(500, 599)
-        print(f"The phone extension is {ext5}")
-
-    for i in range(600, 699):
-        ext6 = random.randit(600, 699)
-        print(f"The phone extension is {ext6}")
-
-    else:
-        ext = "ERROR" 
-
-    return ext[i]
-
-def emails():
-    email_add = scrnName[i]+ "@Westeros.net"
-
-    return email_add[i]
+def clear():
+    if os.name == 'nt':  # For Windows
+        os.system('cls')
+    else:  # For Unix/Linux/MacOS
+        os.system('clear')
 
 #--Main Executing Code----------------------------
 
@@ -125,14 +46,17 @@ lName = []
 age = []
 scrnName =[]
 house = []
-email_add = []
+email_list = []
 dep = []
-ext = []
+phone_ext = []
 
-
-#--EMAIL ADDRESS-----------------------------------------
-
-
+total_rec = 0
+res_total = 0
+m_total = 0
+h_total = 0
+acc_total = 0
+s_total = 0
+aud_total = 0
 
 # opens the text file
 with open ("text_files/got_emails.csv") as csvfile:
@@ -140,138 +64,94 @@ with open ("text_files/got_emails.csv") as csvfile:
 
     for rec in file:
         #append the file data into appropriate lists
-        fName.append(rec[0])
-        lName.append(rec[1])
-        age.append(int(rec[2]))
-        scrnName.append(rec[3])
-        house.append(rec[4])
+
+        total_rec += 1 
+        # total record counter
+
+        fName.append(rec[0]) # first name append
+        lName.append(rec[1]) # last name append
+        age.append(int(rec[2])) # age append
+        scrnName.append(rec[3]) # screen name append
+        house.append(rec[4]) # house append
         
     #--disconected from file-----------------------------
+#for i in range(0, len(fName)):
+    #print(f"{fName[i]:8} {lName[i]:}\t {age[i]:8}\t {scrnName[i]:2}\t\t{house[i]}") # print list
+clear()
+print("-------------------------------------------------------------------------------")
+for i in range(len(fName)):
+    # email name created
+    email = scrnName[i] + "@Westeros.net"
+    email_list.append(email) # append the email name to the email list
+
+    # assign department and extension from house name
+
+    if house[i] == "House Stark": # house
+        dep.append("Research & Development") # department
+        ext = random.randint(100, 199) # random int 
+        res_total += 1
+
+    elif house[i] == "House Targaryen": # house
+        dep.append("Marketing") # department
+        ext = random.randint(200, 299) # random int
+        m_total += 1 
 
 
-print("-------------------------------------------------------------------------------------------")
+    elif house[i] == "House Tully": # house
+        dep.append("Human Resources") # department
+        ext = random.randint(300, 399) # random int
+        h_total += 1
 
-# Write a program that allows users repeaded searches
+    elif house[i] == "House Lannister": # house
+        dep.append("Accounting") # department
+        ext = random.randint(400, 499) # random int
+        acc_total += 1
 
-print("Welcome to the employee database!")
+    elif house[i] == "House Baratheon": # house
+        dep.append("Sales") # department
+        ext = random.randint(500, 599) # random int
+        s_total += 1
 
-answer = input("would you like to begin searching? [y/n]: ").lower() #asking user to begin
+    else:
+        house[i] == "The Night’s Watch"  # house
+        dep.append("Auditing") # department
+        ext = random.randint(600, 699) # random int
+        aud_total += 1
+   
 
-while answer == "y":
+    # Append the extension to the phone extension list
+    phone_ext.append(ext)
+#--print header-----------------------------------------------------------
+print(f"{'FIRST':8} {'LAST':10} {'EMAIL':30} {'DEPARTMENT':23} {'EXT':3}")
+print("-------------------------------------------------------------------------------")
 
-    # get search type from user
-    print("\tSearch Menu Options") 
-    print("1. Search by FIRST NAME") # search by first name
-    print("2. Search by PHONE EXTENSION") # search by phone extension
-    print("3. Search by LAST NAME") # search by last name
-    print("4. Search by DEPARTMENT") # search by department
-    print("5. Exit") # exit program
+# print data from the lists
+for i in range(len(fName)):
+    print(f"{fName[i]:8} {lName[i]:10} {email_list[i]:30} {dep[i]:23} {phone_ext[i]:3}")
 
-    search_type = input("Enter your search type [1-5]: ") 
+file = open('text_files/westeros.csv' , 'w') # create text file 
 
-    if search_type == "1":
-        print("SEARCH BY FIRST NAME") 
-        
-        found = -1 
+for i in range(0, len(fName)):
+    file.write(f"{fName[i]},{lName[i]},{email_list[i]},{dep[i]},{phone_ext[i]}\n") # data for text file \n will add them to a new line at the end
+file.close() # close the file
+print("-------------------------------------------------------------------------------")
+time.sleep(3) # screen sleep timer in seconds
 
-        # get search item from user
-        search_fName = input("Enter the LAST NAME of the employee you are searching for: ").lower()
-
-        # perform search
-        for i in range(0, len(fName)):
-            if search_fName.lower() == fName[i].lower():  
-                found = i # make found the current index
-
-        # display the results
-        if found!= -1:
-            # first name has been found and display data
-            print(f"Your search for {search_fName} was Found")
-            print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
-        else:
-            print(f"Your search for {search_fName} was *NOT* FOUND!") # invalid response
-            print(f"THIS is a cAsE sensative program - check your spelling and try again!") # case sensative
-
-    if search_type == "2":
-        print("SEARCH BY Phone Extension")
-        
-        found = -1 #invalid index, will check later to see if a student has been found
-
-        # get search item from user
-        search_name = input("Enter the phone extension you are searching for: ")
-
-        # perform search
-        for i in range(0, len(age)):
-            if search_name == ext[i]:
-                found = i # make found the current index, can be used later to display
-
-        #display the results
-        if found!= -1:
-            # First name has been found and display data
-            print(f"Your search for {search_name} was Found")
-            print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
-        else:
-            print(f"Your search for {search_name} was *NOT* FOUND!") # invalid response
-            print(f"THIS is a cAsE sensative program - check your spelling and try again!") # case sensative
-        
-    elif search_type == "3":
-        print("\tSearch by LAST NAME")
-        found = [] #created empty list to gather and store index values
-
-        # get search item from user
-        search_lName = input("Enter the department you wish to search for: ")
-
-        # perform search
-        for i in range(0, len(lName)):
-            # the for loop allows "sequence" party -> to being to end
-            if search_lName.lower() == lName[i]:
-                # the IF STATEMNEt allows for "search" part
-                found.append(i) # make found the current index, can be used later to display
-
-        # display the results
-        if not found: # this means list is empty
-            print(f"Your search for {search_lName} was *NOT* FOUND!")
-            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
-
-        else:
-            print(f"Your search for {search_lName} was Found")
-
-            # found is a list with mult. pieces of dtat - must use a for loop to see all
-            for i in range(0, len(found)):
-                # display list
-                print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
-
-    elif search_type == "4":
-        print("\tSearch by DEPARTMENT")
-        found = [] #created empty list to gather and store index values
-
-        # get search item from user
-        search_dep = input("Enter the Department you wish to search for: ")
-
-        # perform search
-        for i in range(0, len(age)):
-            # the for loop allows "sequence" party -> to being to end
-            if search_dep.lower() == dep[i].lower():
-                # the IF STATEMNEt allows for "search" part
-                found.append(i) # make found the current index, can be used later to display
-
-        # display the results
-        if not found: # this means list is empty
-            print(f"Your search for {search_dep} was *NOT* FOUND!")
-            print(f"THIS is a cAsE sensative program - check your spelling and try again!")
-
-        else:
-            print(f"Your search for {search_dep} was Found")
-
-            # found is a list with mult. pieces of dtat - must use a for loop to see all
-            for i in range(0, len(found)):
-                # display list
-                print(f"{fName[found]:10}   {lName[found]:10}   {age[found]:3}   {scrnName[found]:3}   {house[found]:3}   {email_add[found]:6.2f} {dep[found]} {ext[found]}")
-
-
-    # exit choice from menu 
-    elif search_type == "5":
-        answer = "n"
-        print("Thank you for using the program!")
-    
-    if search_type == "1" or search_type == "2" or search_type == "3": # only user doesnt specify 3 to exit
-        answer = input("would you like to search again? [y/n]: ").lower()
+print(f"\n\tYour file is ready!") # file has been uploaded
+time.sleep(1)
+print(f"\n\tThere are {total_rec} employees in the file")
+time.sleep(1) # total employees 
+print(f"\n\tThere are {res_total} employees in Research & Development") # total count for each department
+time.sleep(1)
+print(f"\n\tThere are {m_total} employees in Marketing") # total count for marketing
+time.sleep(1)
+print(f"\n\tThere are {h_total} employees in Human Resources") # total count for marketing
+time.sleep(1)
+print(f"\n\tThere are {acc_total} employees in Accounting") # total count for accounting
+time.sleep(1)
+print(f"\n\tThere are {s_total} employees in Sales") # total count for sales
+time.sleep(1)
+print(f"\n\tThere are {aud_total} employees in Auditing") # total count for auditing
+time.sleep(1)
+print("-------------------------------------------------------------------------------")
+print("\n\tThank you for using the program!")

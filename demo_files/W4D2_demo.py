@@ -81,9 +81,9 @@ else:
 
 #write some data to a new file
 # create a place holder name for the file
-file = open('textfiles/test.csv' , 'w') # create a pathway using folder name / then file name . csv 
+file = open('text_files/test.csv' , 'w') # create a pathway using folder name / then file name . csv 
 
 for i in range(0, len(dragons)):
-    file.write(f"{dragons[i]},{riders[i]}\n")
+    file.write(f"{dragons[i]},{riders[i]}")
 
 file.close()
