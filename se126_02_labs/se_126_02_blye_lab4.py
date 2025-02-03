@@ -27,10 +27,13 @@
 # i = index
 
 #----imports-------------------------------
+
 import time
 import csv
 import random
 import os
+
+#--functions-----------------------------------
 
 def clear():
     if os.name == 'nt':  # For Windows
@@ -49,6 +52,8 @@ house = []
 email_list = []
 dep = []
 phone_ext = []
+
+#--initialize---------------------------------------
 
 total_rec = 0
 res_total = 0
@@ -75,10 +80,13 @@ with open ("text_files/got_emails.csv") as csvfile:
         house.append(rec[4]) # house append
         
     #--disconected from file-----------------------------
+
 #for i in range(0, len(fName)):
     #print(f"{fName[i]:8} {lName[i]:}\t {age[i]:8}\t {scrnName[i]:2}\t\t{house[i]}") # print list
+
 clear()
 print("-------------------------------------------------------------------------------")
+
 for i in range(len(fName)):
     # email name created
     email = scrnName[i] + "@Westeros.net"
@@ -117,12 +125,14 @@ for i in range(len(fName)):
         dep.append("Auditing") # department
         ext = random.randint(600, 699) # random int
         aud_total += 1
-   
 
     # Append the extension to the phone extension list
     phone_ext.append(ext)
+
 #--print header-----------------------------------------------------------
+
 print(f"{'FIRST':8} {'LAST':10} {'EMAIL':30} {'DEPARTMENT':23} {'EXT':3}")
+
 print("-------------------------------------------------------------------------------")
 
 # print data from the lists
@@ -134,7 +144,9 @@ file = open('text_files/westeros.csv' , 'w') # create text file
 for i in range(0, len(fName)):
     file.write(f"{fName[i]},{lName[i]},{email_list[i]},{dep[i]},{phone_ext[i]}\n") # data for text file \n will add them to a new line at the end
 file.close() # close the file
+
 print("-------------------------------------------------------------------------------")
+
 time.sleep(3) # screen sleep timer in seconds
 
 print(f"\n\tYour file is ready!") # file has been uploaded
