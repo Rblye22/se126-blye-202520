@@ -85,6 +85,7 @@ with open ("text_files/got_emails.csv") as csvfile:
     #print(f"{fName[i]:8} {lName[i]:}\t {age[i]:8}\t {scrnName[i]:2}\t\t{house[i]}") # print list
 
 clear()
+
 print("-------------------------------------------------------------------------------")
 
 for i in range(len(fName)):
@@ -146,7 +147,7 @@ for i in range(0, len(fName)):
 file.close() # close the file
 
 print("-------------------------------------------------------------------------------")
-
+ 
 time.sleep(3) # screen sleep timer in seconds
 
 print(f"\n\tYour file is ready!") # file has been uploaded
@@ -166,4 +167,4 @@ time.sleep(1)
 print(f"\n\tThere are {aud_total} employees in Auditing") # total count for auditing
 time.sleep(1)
 print("-------------------------------------------------------------------------------")
-print("\n\tThank you for using the program!")
+print("\n\tThank you for using the program!") # goodbye message
