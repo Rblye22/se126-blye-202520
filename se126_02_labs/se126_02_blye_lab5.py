@@ -1,3 +1,23 @@
+# Robert Blye
+# SE126.02
+# Lab 5
+# 2-14-25
+
+# PROGRAM PROMPT: Build a personal library search system using the file book_list.csv. Store the file data into 1D parallel lists, then use the appropriate searching algorithms for the menu system options. When your user runs any of the options 1 – 7, show all data associated with the search [Library Number, Title, Author, Genre, Page count, Status]. Do not allow the program to end unless the user chooses option 8 to exit. All searches should not be case sensitive.
+
+# VARIABLE DICTIONARY:
+# libNum = libary number
+# title = book title
+# author = author of the book
+# genre = genre of book (ex. horror)
+# pages = number of pages in the book
+# status = status if the book is on loan or available
+# temp = temp place holder for sorting 
+# listname = list name used for swapping data to organize
+# search_type = type of search the user chooses
+# search_aut = search by name of author
+# search_gen = search by genre
+# search_num = search by libary number
 
 #----imports-------------------------------
 
@@ -21,23 +41,24 @@ def display(x, foundList, records):
 
             records   the length of a list we are going to process through (# of loops/prints)
     '''
-    print(f"{'Libary #':8}  {'TITLE':30} {'Author':10}\t\t{'Grenre':15}\t\t{'Pages':10}\t\t{'STATUS':4}")
-    print("----------------------------------------------------------------")
+    print(f"{'Libary #':8}    {'TITLE':40}  {'Author':20}\t{'Grenre':15} {'Pages':13}\t{'STATUS':4}")
+    print("-------------------------------------------------------------------------------------------------------------------------------")
     if x != "x":
         #printing one record
-        print(f"{libNum[x]:8} {title[x]:30} {author[x]:10} {genre[x]:15} {pages[x]:10} {status[x]:4}")
+        print(f"{libNum[x]:8}  {title[x]:40}  {author[x]:20}  {genre[x]:20} {pages[x]:13} {status[x]:10}") 
 
     elif foundList:
         #printing multiples, based on length stored in 'foundList'
         for i in range(0, records):
-            print(f"{libNum[foundList[i]]:8}  {title[foundList[i]]:30}  {author[foundList[i]]:10} {genre[foundList[i]]:15} {pages[foundList[i]]:10} {status[foundList[i]]:4}") 
+            print(f"{libNum[foundList[i]]:8}  {title[foundList[i]]:40}  {author[foundList[i]]:20} {genre[foundList[i]]:20} {pages[foundList[i]]:13} {status[foundList[i]]:10}") 
     
     else:
         #printing full data, based on length stored in 'records'
         for i in range(0, records):
-            print(f"{libNum[i]:8}\t{title[i]:25}\t{author[i]:20}  {genre[i]:20} {pages[i]:3} {status[i]:4}")
+            print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20} {pages[i]:13} {status[i]:10}") 
 
-    print("----------------------------------------------------------------\n")
+    print("-------------------------------------------------------------------------------------------------------------------------------\n")
+
 def swap(i, listName):
     temp = listName[i]
     listName[i] = listName[i + 1]
@@ -135,12 +156,12 @@ while answer.lower() == "y" and search_type != 4:
                         status[index] = status[index + 1]
                         status[index + 1] = temp
 
-        print("\t\tTITLES BY ALPHABETICAL ORDER")
-        print(f"{'Libary #':8}  {'TITLE':30} {'Author':10}\t\t{'Grenre':15}\t\t{'Pages':10}\t\t{'STATUS':4}") # header
-        print("--------------------------------------------------------------------------------------------------------------")
+        print("\t\tTITLES BY ALPHABETICAL ORDER\n\n")
+        print(f"{'Libary #':8}    {'TITLE':40}  {'Author':20}\t{'Grenre':15} {'Pages':13}\t{'STATUS':4}") # header
+        print("-------------------------------------------------------------------------------------------------------------------------------")
         for i in range(0, len(title)):
-            print(f"{libNum[i]:8}  {title[i]:25}  {author[i]:25}  {genre[i]:20} {pages[i]:3} {status[i]:4}") # display the lists in alphabetical order
-        print("--------------------------------------------------------------------------------------------------------------\n")
+            print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20} {pages[i]:13} {status[i]:10}") # display the lists in alphabetical order
+        print("-------------------------------------------------------------------------------------------------------------------------------\n")
         time.sleep(2)
 
     elif search_type == "2":
@@ -184,7 +205,7 @@ while answer.lower() == "y" and search_type != 4:
             # found is a list with mult. pieces of dtat - must use a for loop to see all
             for i in range(0, len(found)):
                 # display list
-                print(f"{libNum[found[i]]:4}  {title[found[i]]:10}  {author[found[i]]:25}  {genre[found[i]]:10} {pages[found[i]]:10} {status[found[i]]:8}")
+                print(f"{libNum[found[i]]:8}  {title[found[i]]:40}  {author[found[i]]:20}  {genre[found[i]]:20} {pages[found[i]]:13} {status[found[i]]:10}")
                 time.sleep(2)
 
     if search_type == "4":
@@ -211,7 +232,7 @@ while answer.lower() == "y" and search_type != 4:
             # found is a list with mult. pieces of dtat - must use a for loop to see all
             for i in range(0, len(found)):
                 # display list
-                print(f"{libNum[found[i]]:4}  {title[found[i]]:10}  {author[found[i]]:25}  {genre[found[i]]:10} {pages[found[i]]:10} {status[found[i]]:8}")
+                print(f"{libNum[found[i]]:8}  {title[found[i]]:40}  {author[found[i]]:20}  {genre[found[i]]:20} {pages[found[i]]:13} {status[found[i]]:10}")
                 time.sleep(2)
 
     if search_type == "5":
@@ -238,51 +259,47 @@ while answer.lower() == "y" and search_type != 4:
             # found is a list with mult. pieces of dtat - must use a for loop to see all
             for i in range(0, len(found)):
                 # display list
-                print(f"{libNum[found[i]]:4}  {title[found[i]]:10}  {author[found[i]]:25}  {genre[found[i]]:10} {pages[found[i]]:10} {status[found[i]]:8}")
+                print(f"{libNum[found[i]]:8}  {title[found[i]]:40}  {author[found[i]]:20}  {genre[found[i]]:20} {pages[found[i]]:13} {status[found[i]]:10}")
                 time.sleep(2)
 
     if search_type == "6":
-        search = "available"
+        search = "available" # set search to available status
         found = []
         if search.lower() == "on loan":
-            print("\nYou have chosen to show all available books\n")
+            print("\nYou have chosen to show all available books\n") # let user know their choice
            
         for i in range(0, len(status)):
             if status[i].lower() == search.lower():
                 found.append(i)  # Add the index of the found item
             
             # Display results
-        print(f"Books that are {search}:")
-        print(f"{'Libary #':8}  {'TITLE':30} {'Author':10}\t\t{'Grenre':15}\t\t{'Pages':10}\t\t{'STATUS':4}")
-        print("--------------------------------------------------------------------------------------------------------------")
         if not found:  # If no matches were found
             print(f"Sorry, your search for {search} came up empty")
         else:
             # Display the items that match the "on loan" status
+            print(f"Books that are {search}:")
             for i in found:
-                print(f"{libNum[i]:8}  {title[i]:25}  {author[i]:25}  {genre[i]:20} {pages[i]:3}\t{status[i]:4}")
+                print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20} {pages[i]:13} {status[i]:10}")
         time.sleep(2)
 
     if search_type == "7":
-        search = "on loan"
+        search = "on loan" # set search to on loan status
         found = []
-        if search.lower() == "on loan":
-            print("\nYou have chosen to show all On Loan books\n")
+        if search.lower() == "on loan": 
+            print("\nYou have chosen to show all On Loan books\n") # let user know their choice
            
         for i in range(0, len(status)):
             if status[i].lower() == search.lower():
                 found.append(i)  # Add the index of the found item
             
             # Display results
-        print(f"Books that are {search}:")
-        print(f"{'Libary #':8}  {'TITLE':30} {'Author':10}\t\t{'Grenre':15}\t\t{'Pages':10}\t\t{'STATUS':4}")
-        print("--------------------------------------------------------------------------------------------------------------")
         if not found:  # If no matches were found
             print(f"Sorry, your search for {search} came up empty")
         else:
             # Display the items that match the "on loan" status
+            print(f"Books that are {search}:")
             for i in found:
-                print(f"{libNum[i]:8}  {title[i]:25}  {author[i]:25}  {genre[i]:20} {pages[i]:3}\t{status[i]:4}")
+                print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20} {pages[i]:13} {status[i]:10}")
             time.sleep(2)
 
     # exit choice from menu 

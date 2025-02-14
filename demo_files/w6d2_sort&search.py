@@ -1,7 +1,5 @@
 #W6D2 - Bubble Sorting & Binary Search Review
 
-#https://www.google.com/search?q=bubble+sort+visualization&rlz=1C1GCHA_enUS1119US1119&oq=bubble+sort+visualization&gs_lcrp=EgZjaHJvbWUyCQgAEEUYORiABDIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIICAQQABgWGB4yCAgFEAAYFhgeMg0IBhAAGIYDGIAEGIoFMg0IBxAAGIYDGIAEGIoFMg0ICBAAGIYDGIAEGIoF0gEIMzUwMmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:7e94f359,vid:0BkoXZBbhfU,st:0 
-
 #***IMPORTANT: 
 #   In order to use binary search, 2 caveats must be fulfilled:
 #      *the list we intend to search through is ORDERED
@@ -94,8 +92,11 @@ while answer.lower() == "y" and search_type != 4:
                         temp = meaning[index]
                         meaning[index] = meaning[index + 1]
                         meaning[index + 1] = temp
+
             print("\t\tORDERED BY *NAME*")
+
             print(f"{'TYPE':8}   {'NAME':10}   {'CULTURE':10}   {'MEANING'}") #HEADER PRINT
+
             print("-----------------------------------------------------------------------")
             for i in range(0, len(class_type)):
                 print(f"{class_type[i]:8}   {name[i]:10}   {culture[i]:10}   {meaning[i]}")
@@ -120,7 +121,7 @@ while answer.lower() == "y" and search_type != 4:
                 print(f"We FOUND {search} !")
                 print(f"{class_type[mid]:8}   {name[mid]:10}   {culture[mid]:10}   {meaning[mid]}")
             else:
-                print(f"We DID NOT FIND {search} :[")
+                print(f"We DID NOT FIND {search}")
 
         elif search_type == 3: #MEANING
             word = input("Which MEANING KEYWORD are you looking for? ")
