@@ -121,3 +121,25 @@ while ans == "y":
         ans = "x" # ans changes from "y" to end the loop
 
 print("Thank you for using the program!")
+
+# 2D lists
+dataFile = [
+    names, # list of names
+    nums, # list of numbers
+    colors # lists of colors
+]
+
+dataFile = [] 
+with open ("text_files\simple.csv") as csvfile:
+    file = csv.reader(csvfile)
+
+    for rec in file:
+        dataFile.append(rec)
+
+print("\n\nDATA FILE (2D List[][]):")
+for i in range(0, len(dataFile)):
+    # accessing each list within 2D list dataFile
+    print(f"Index {i} of 'DataFile': {dataFile[i]}")
+    for j in range(0, len(dataFile[i])):
+        # accessing each value within the list currently looked at from outter for loop
+        print(f"Index {i} of 'DataFile': {dataFile[i][i]}")
