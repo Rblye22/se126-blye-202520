@@ -118,49 +118,32 @@ while answer.lower() == "y" and search_type != 4:
          print("***INVALID ENTRY!***\nPlease try again")
 
     elif search_type == "1":
-        print(f"\nYou have chosen to show all Tiles\n")
+        print(f"\n\tYou have chosen to show all Tiles\n\n")
         #BUBBLE SORT ALGORITHM
         for i in range(0, len(title) - 1):#outter loop
                 #print("OUTER LOOP! i = ", i)
 
                 for index in range(0, len(title) - 1):#inner loop
-                    #below if statement determines the sort
-                    #list used is the list being sorted
-                    # > is for increasing order, < for decreasing
-
-                    if(title[index] > title[index + 1]):
-
-                        #if above is true, swap places!
-                        temp = title[index]
-                        title[index] = title[index + 1]
-                        title[index + 1] = temp
-
-                        #swap all other values
-                        temp = libNum[index]
-                        libNum[index] = libNum[index + 1]
-                        libNum[index + 1] = temp
-
-                        temp = author[index]
-                        author[index] = author[index + 1]
-                        author[index + 1] = temp
-
-                        temp = genre[index]
-                        genre[index] = genre[index + 1]
-                        genre[index + 1] = temp
-
-                        temp = pages[index]
-                        pages[index] = pages[index + 1]
-                        pages[index + 1] = temp
-
-                        temp = status[index]
-                        status[index] = status[index + 1]
-                        status[index + 1] = temp
+                    for j in range(len(title) -1):
+                # see if larger value comes before smaller
+                        if title[j] > title[j +1]:
+                            # swap places - not just this value, but all associated values!
+                            swap(j, title)
+                            swap(j, libNum)
+                            swap(j, author)
+                            swap(j, genre)
+                            swap(j, pages)
+                            swap(j, status)
+                
+                min = 0 # always start value --> First index / lowest value in ascending order list
+                max = len(title) - 1 # last index / highest in asending order list
+                mid = int((min + max) / 2) # Middle index / middle value in ascending order list
 
         print("\t\tTITLES BY ALPHABETICAL ORDER\n\n")
         print(f"{'Libary #':8}    {'TITLE':40}  {'Author':20}\t{'Grenre':15} {'Pages':13}\t{'STATUS':4}") # header
         print("-------------------------------------------------------------------------------------------------------------------------------")
         for i in range(0, len(title)):
-            print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20} {pages[i]:13} {status[i]:10}") # display the lists in alphabetical order
+            print(f"{libNum[i]:8}  {title[i]:40}  {author[i]:20}  {genre[i]:20}  {pages[i]:13}   {status[i]:10}") # display the lists in alphabetical order
         print("-------------------------------------------------------------------------------------------------------------------------------\n")
         time.sleep(2)
 
@@ -233,7 +216,7 @@ while answer.lower() == "y" and search_type != 4:
             for i in range(0, len(found)):
                 # display list
                 print(f"{libNum[found[i]]:8}  {title[found[i]]:40}  {author[found[i]]:20}  {genre[found[i]]:20} {pages[found[i]]:13} {status[found[i]]:10}")
-                time.sleep(2)
+            time.sleep(2)
 
     if search_type == "5":
         print(f"\nYou have chosen to search by Libary Number\n")
@@ -260,7 +243,7 @@ while answer.lower() == "y" and search_type != 4:
             for i in range(0, len(found)):
                 # display list
                 print(f"{libNum[found[i]]:8}  {title[found[i]]:40}  {author[found[i]]:20}  {genre[found[i]]:20} {pages[found[i]]:13} {status[found[i]]:10}")
-                time.sleep(2)
+            time.sleep(2)
 
     if search_type == "6":
         search = "available" # set search to available status

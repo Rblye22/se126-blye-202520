@@ -54,9 +54,6 @@ while ans == "y":
                     swap(j, names)
                     swap(j, nums)
 
-
-
-
         min = 0 # always start value --> First index / lowest value in ascending order list
         max = len(names) - 1 # last index / highest in asending order list
         mid = int((min + max) / 2) # Middle index / middle value in ascending order list
@@ -87,7 +84,7 @@ while ans == "y":
 
     elif choice == "3":
         print("~Search by Color~")
-        # bubble sort befor binary:
+        # bubble sort before binary:
         for i in range(len(colors) -1):
             for j in range(len(colors) -1):
                 # see if larger value comes before smaller
