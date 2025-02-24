@@ -72,8 +72,8 @@ def goAgain():
     return input("Would you like to reserve another seat on this flight? [y/n]: ").lower()
 
 #--Create lists for rows and seats-------------------------------------------
-rowNum = ["1", "2", "3", "4", "5", "6", "7"] # row numbers
-seatA = ["A", "A", "A", "A", "A", "A", "A"]
+rowNum = ["1", "2", "3", "4", "5", "6", "7"] # row numbers [0]
+seatA = ["A", "A", "A", "A", "A", "A", "A"] # seats [1]
 seatB = ["B", "B", "B", "B", "B", "B", "B"]
 seatC = ["C", "C", "C", "C", "C", "C", "C"]
 seatD = ["D", "D", "D", "D", "D", "D", "D"]
@@ -86,7 +86,7 @@ for i in range(0, len(rowNum)):
 file.close() # close the file
 
 #--Main Executing Code------------------------------------------------------
-valid_seats = ['A', 'B', 'C', 'D'] # seats A - D are valid
+valid_seats = ["A", "B", "C", "D"] # seats A - D are valid
 continue_reservation = "y"
 
 while continue_reservation == "y":
