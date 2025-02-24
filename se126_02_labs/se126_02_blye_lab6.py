@@ -20,6 +20,7 @@
 # continue_reservation = ask the user if they have another reservation if no it exits the program
 
 #--Imports----------------------------------------------
+
 import time
 import csv
 
@@ -28,7 +29,7 @@ import csv
 def display_seating_chart():
     print("\t         __|__")
     print("\t  --@--@--(_)--@--@--")
-    print("\n\tAirplane Seating Chart")
+    print("\n\tAirplane Seating Chart\n")
     time.sleep(1)
     
     print(f"\t{'ROW':10}{'SEATS A - D'}")
@@ -43,16 +44,16 @@ def update_seat(seat_input):
 
     for i in range(len(rowNum)):
         if rowNum[i] == row:
-            if seat == 'A' and seatA[i] != "X":
+            if seat == "A" and seatA[i] != "X":
                 seatA[i] = "X"
                 print(f"\n\tSeat {seat_input} has been selected!\n")
-            elif seat == 'B' and seatB[i] != "X":
+            elif seat == "B" and seatB[i] != "X":
                 seatB[i] = "X"
                 print(f"\n\tSeat {seat_input} has been selected!\n")
-            elif seat == 'C' and seatC[i] != "X":
+            elif seat == "B" and seatC[i] != "X":
                 seatC[i] = "X"
                 print(f"\n\tSeat {seat_input} has been selected!\n")
-            elif seat == 'D' and seatD[i] != "X":
+            elif seat == "D" and seatD[i] != "X":
                 seatD[i] = "X"
                 print(f"\n\tSeat {seat_input} has been selected!\n")
             else:
