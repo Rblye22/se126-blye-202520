@@ -1,23 +1,3 @@
-# Robert Blye
-# SE126.02
-# Lab 6
-# 2-23-25
-
-# PROGRAM PROMPT: to assign passengers seats in an airplane. The program should display the seat pattern, with an ‘X’ making the seats already assigned. After displaying the seats available, the program prompts for the seat desired, the user types in a seat and then the display of available seats is updated. This continues until all seats are filled or until the user signals that the program should end. If a user types in a seat that is already assigned, the program should say that the seat is occupied and ask for another choice.
-
-# VARIABLE DICTIONARY:
-# display_seating_chart() = function used to display the seating chart
-# update_seat() = function used to see if a seat is available or to reserve a seat
-# save_seating_chart() = function to save seating chart as csv file
-# rowNum = row number in the plane\
-# seat = seat letter A - D
-# row = row number on the flight
-# seat_input = the input the user is choosing for row and seat number (1A)
-# seatA = seat A in the plane for the fight (WINDOW SEAT)
-# seatB = seat B in the plane for the flight (ISLE SEAT)
-# seatC = seat C in the plane for the flight (ISLE SEAT)
-# seatD = seat D in the plane for the flight (WINDOW SEAT)
-# continue_reservation = ask the user if they have another reservation if no it exits the program
 
 #--Imports----------------------------------------------
 

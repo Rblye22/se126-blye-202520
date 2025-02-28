@@ -1,53 +1,52 @@
-# W8D1 in class demo - Dictionaries
+#W8D1 - Introduction to Dictionaries
 
-#--Imports----------------------------------------------------------
+#Dictionaries in Python are a collection set similar to associative arrays in JavaScript but also look similar to JS object builds. Most importantly, they store data in key and value pairs. They keys are referred to as properties and the values can be any data type. 
 
+#---IMPORTS-----------------------------------------------------
 
+#---MAIN EXECUTING CODE-----------------------------------------
 
-
-#--Main Executing Code-----------------------------------------------
-
-#--Start by ctreating a populated dictionary
+#start by creating a populated dictionary 
 myCar = {
-    # 'key': value,
+    #'key' : value, 
     "make": "Ford",
     "model": "SE Hatchback",
     "year": 2014,
     "name": "Gwendoline",
     "color": "black",
-    # keys cannot be repeated/ NO DUPLICATES allowed if repeated last value will replace the first value
-    "color": "red"
+    #keys cannot be repeated/NO DUPLICATES allowed
+    #repeats will replace first value,see 'color' key below in print
+    "color" : "red"
 }
 
-# display the entire dictionary -> 'myCar'
+#display the entire dictionary -> 'myCar'
 print(myCar)
-# display  just the "make" and "model" valuse of the sictionary 'mycar'
-#print(f"My care is a {myCar["make"]} {myCar["model"]}")
 
-# dictionaryname["kayName"] --> acesses stored value
-# "keyName" will always be a string index, created by dev
+#display just the 'make' and 'model' values of the dictionary 'myCar'
 
-#keys cannot be repeated within a dictionary, but they can be reused acrross unique dictionary names: myCar vs yourCar
+#dictionaryName["keyName"] --> accesses stored value
+#"keyName" will always be a STRING index, created by developer
+print(f"My car is a {myCar['make']} {myCar['model']}")
+
+#keys cannot be repeated WITHIN a dictionary, but they can be reused across unique dictionary names: myCar vs yourCar
 yourCar = {
-    # 'key': value,
+    #'key' : value, 
     "make": "GMC",
     "model": "Canyon",
     "year": 2019,
     "name": "Jolly",
     "color": "black",
-    # keys cannot be repeated/ NO DUPLICATES allowed if repeated last value will replace the first value
-    "color": "red",
     "friends": ["Ray", "Matt", "Duncan"]
 }
 
-print(f"Robs car is a {yourCar['make']} {yourCar['model']}")
+print(f"Rob's car is a {yourCar['make']} {yourCar['model']}")
 
-# print Duncan
-#print(f"{yourCar["friends"][2]}")
+#since "friends" gives access to a list, secondary [] are used to point to which value in said list
+print(f"{yourCar['friends'][2]}")
 
-# processing through a dictionary and its keys
-for key in yourCar:
-    print(f"{key.upper()} : {yourCar[key]}")
+#processing through a dictionary and its keys
+for key in myCar:
+    print(f"{key.upper()} : {myCar[key]}")
 
+#add a key and value to a pre-existing dictionary
 yourCar["plate"] = "12345"
-
