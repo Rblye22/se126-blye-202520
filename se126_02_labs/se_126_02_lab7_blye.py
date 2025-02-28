@@ -48,10 +48,10 @@ with open("text_files\words.csv") as csvfile:
 
 #--disconnect from file----------------------------------------------------
 
-print("\n\tWelcome to the Dictionary Search Program!\n")
+print("\n\tWelcome to the Dictionary Search Program!\n") 
 time.sleep(1)
 answer = "y"
-search_type = 0
+search_type = 0 
 while answer.lower() == "y" and search_type != 4:
 
     # get search type from user
@@ -59,14 +59,13 @@ while answer.lower() == "y" and search_type != 4:
     print("\t1. Show Dictionary") # show dictionary
     print("\t2. Search by Word") # search for word
     print("\t3. Add Word to Dictionary") # add word to dictionary
-    print("\t3.5. Show Dictionary In Alphabetic Order") # show dictionary in alphabetic order
     print("\t4. Exit") # exit program
 
     search_type = input("\nEnter your search type [1-4]: \n") # users input of choice
 
         #using 'not in' for user validity checks
     if search_type not in ["1", "2", "3", "4"]:
-        print("***INVALID ENTRY!***\nPlease try again")
+        print("***INVALID ENTRY!***\nPlease try again") # invalid entry
     
     elif search_type == "1":
         print(f"\n\tYou have chosen to Show Dictionary\n\n")
@@ -78,19 +77,29 @@ while answer.lower() == "y" and search_type != 4:
             time.sleep(.25)
 
     elif search_type == "2":
-        search = input("\nEnter the Word you are looking for: ")
+        search = input("\nEnter the Word you are looking for: ") # search for word
         for key in library.keys():
-            if search.lower() == key.lower():
-                #store the found title's location in the dictionary --> 
+            if search.lower() == key.lower(): 
                 found = key.lower()
-        if found != 0:
-            print(f"\nWord:{found:6}\tDEFINITION:{library[found]}\n")
-        else:
-            print(f"\nYour search for {search} came up empty :[")
-        time.sleep(1)
+        if found != 0: 
+            print(f"\nWord:{found:6}\tDEFINITION:{library[found]}\n") # word was found
+        else: 
+            print(f"\nYour search for {search} came up empty :[") # word was not found
+        time.sleep(2)
+
     elif search_type == "3":
         # Initialize the dictionary
         dictionary = {
             "python" : "a popular programming language created by Guido van Rossum",
     "documentation" : "programming comments; notes within code which explain what the code does"
     }
+        add_word = input("Enter the word you wish to add: ") # adding word to dictionary
+        add_def = input("Enter the definition: ") # adding definition
+        library.update({f"{add_word}": f"{add_def}"})
+        print(library.update)
+        time.sleep(1)
+
+    # exit choice from menu 
+    elif search_type == "4":
+        answer = "n" # exit the loop
+        print("\nThank you for using the program!\n")
