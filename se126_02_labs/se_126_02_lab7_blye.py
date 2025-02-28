@@ -5,28 +5,18 @@
 # PROGRAM PROMPT: Access the words.csv file and store the data to a dictionary, where each word in the file is a key of the dictionary and the value stored to each key is the word’s corresponding definition. Then, create a repeatable program that allows a user to interact with the dictionary based on the following menu: My Programming Dictionary Menu 1. Show all words – Show all words and their definitions stored to the dictionary 2. Search for a word – Allow the user to enter a word and if it is in the dictionary, show its definition (tell the user if the word is not in the dictionary) 3. Add a word – Allow a user to add a word and its definition to the dictionary if it does not already exist 4. EXIT The program should not be case sensitive for user input, and the user should only be able to quit when they have selected menu option number 4.
 
 # VARIABLE DICTIONARY:
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+# library = Dictionary used to store words and their definitions both are strings
+# search_type = the type of search the user is trying to use from the menu
+# key = the word in the dictionary 
+# add_word = add a word to the dictionary
+# add_def = add definition of a word to the dictionary
+# found = search result was found 
 
 #--Imports----------------------------------------------------------
 import csv
 import time
 
 #--Functions--------------------------------------------------------
-def swap(i, listName):
-    temp = listName[i]
-    listName[i] = listName[i + 1]
-    listName[i + 1] = temp
 
 #--Main Executing Code-----------------------------------------------
 
@@ -48,10 +38,10 @@ with open("text_files\words.csv") as csvfile:
 
 #--disconnect from file----------------------------------------------------
 
-print("\n\tWelcome to the Dictionary Search Program!\n") 
+print("\n\tWelcome to the Dictionary Search Program!\n") # welcome message
 time.sleep(1)
 answer = "y"
-search_type = 0 
+search_type = 0 # initializing search type
 while answer.lower() == "y" and search_type != 4:
 
     # get search type from user
@@ -78,9 +68,9 @@ while answer.lower() == "y" and search_type != 4:
 
     elif search_type == "2":
         search = input("\nEnter the Word you are looking for: ") # search for word
-        for key in library.keys():
-            if search.lower() == key.lower(): 
-                found = key.lower()
+        for key in library.keys(): 
+            if search.lower() == key.lower(): # searching for the key
+                found = key.lower() 
         if found != 0: 
             print(f"\nWord:{found:6}\tDEFINITION:{library[found]}\n") # word was found
         else: 
@@ -93,10 +83,10 @@ while answer.lower() == "y" and search_type != 4:
             "python" : "a popular programming language created by Guido van Rossum",
     "documentation" : "programming comments; notes within code which explain what the code does"
     }
-        add_word = input("Enter the word you wish to add: ") # adding word to dictionary
-        add_def = input("Enter the definition: ") # adding definition
+        add_word = input("Enter the word you wish to add: ") # adding a new word to the dictionary
+        add_def = input("Enter the definition: ") # adding a definition to the new word
         library.update({f"{add_word}": f"{add_def}"})
-        print(library.update)
+        print(library.update) # display new library with newly added word and definition
         time.sleep(1)
 
     # exit choice from menu 
