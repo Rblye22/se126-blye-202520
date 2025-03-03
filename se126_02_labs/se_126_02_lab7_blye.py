@@ -21,7 +21,7 @@ import time
 #--Main Executing Code-----------------------------------------------
 
 library = {
-    # indexes are strings set by the dev
+    # indexs are strings set by the dev
     #'key' : value
     "python" : "a popular programming language created by Guido van Rossum",
     "documentation" : "programming comments; notes within code which explain what the code does"
@@ -43,7 +43,6 @@ time.sleep(1)
 answer = "y"
 search_type = 0 # initializing search type
 while answer.lower() == "y" and search_type != 4:
-
     # get search type from user
     print("\tSearch Menu Options\n")
     print("\t1. Show Dictionary") # show dictionary
@@ -85,7 +84,7 @@ while answer.lower() == "y" and search_type != 4:
     }
         add_word = input("Enter the word you wish to add: ") # adding a new word to the dictionary
         add_def = input("Enter the definition: ") # adding a definition to the new word
-        library.update({f"{add_word}": f"{add_def}"})
+        library.update({f"{add_word}": f"{add_def}"}) # update library with new word and definition
         print(library.update) # display new library with newly added word and definition
         time.sleep(1)
 
