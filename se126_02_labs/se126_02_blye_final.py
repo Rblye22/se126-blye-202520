@@ -3,24 +3,13 @@
 # Final 
 # 3/1/2025
 
-# PROGRAM PROMPT: 
+# PROGRAM PROMPT: The program must either utilize a file or create an edited file. The program must include at minimum the use of at least two 1D lists or one 2D list. The program must showcase an understanding of control flow structures: repetition and single-decision. The program must showcase an understanding of self-built functions, to include the need for parameters as well as return values. The program must include the use of a searching algorithm: either sequential or binary (or both). The program must import at least one python library documentation include a brief program description at the start of the file include internal documentation related to the functionality of your program code documentation for anything used not introduced in the course.
 
 # VARIABLE DICTIONARY:
 # callsign = A call sign is a unique identifier used in radio communication to distinguish one station or operator from another.
 # unit = The Unit of the call sign (ex. 2-70 is 2nd battalion 70th armored regigement)
 # radio_freq = the frequency that the unit is on for their communications
 # unit_type = type of unit they are (ex. Infantry or Tank)
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-#
-
 
 #----imports-----------------------------------------------------------------------
 import time
