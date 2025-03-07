@@ -62,7 +62,6 @@ for i in range(0, len(callsign)):
         file.write(f"{callsign[i]},{unit[i]},{radio_freq[i]},{unit_type[i]}\n")
 file.close() # close the file
 #--disconnect from file-------------------------------------------------------
-
 clear()
 
 print("\n\tWelcome to the 1st Infantry Division Radio Communications Sytem!")
