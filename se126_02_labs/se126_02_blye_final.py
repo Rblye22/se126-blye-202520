@@ -113,7 +113,7 @@ while answer.lower() == "y" and search_type != 4:
 
     elif search_type == "3":
         print(f"\nYou have chosen to search by Unit\n")
-        print("Please enter the unit as Battion - Regiment (ex.2-16)\n")
+        print("Please enter the unit as Battion - Regiment (ex.2-16)\n") # this is instructions on how to type unit
         search = input("What Unit are you looking for: ")
         
         found = []
