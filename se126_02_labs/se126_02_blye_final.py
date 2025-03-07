@@ -10,6 +10,9 @@
 # unit = The Unit of the call sign (ex. 2-70 is 2nd battalion 70th armored regigement)
 # radio_freq = the frequency that the unit is on for their communications
 # unit_type = type of unit they are (ex. Infantry or Tank)
+# clear() = clear terminal function
+# display(x,foundList, records) = function to display unit data
+# found = data found in file
 
 #----imports-----------------------------------------------------------------------
 import time
@@ -58,6 +61,7 @@ for i in range(0, len(callsign)):
     else:
         file.write(f"{callsign[i]},{unit[i]},{radio_freq[i]},{unit_type[i]}\n")
 file.close() # close the file
+#--disconnect from file-------------------------------------------------------
 
 clear()
 
@@ -69,20 +73,21 @@ while answer.lower() == "y" and search_type != 4:
 
     # get search type from user
     print("\n\tSearch Menu Options\n")
-    print("\t1. Show all Units and their information") # show all titles
-    print("\t2. Search by Callsign") # search by title
-    print("\t3. Search by Unit") # search by author
-    print("\t4. Search by Frequency") # search by genre
-    print("\t5. Search by Unit Type") # search by number
+    print("\t1. Show all Units and their information") # show all units
+    print("\t2. Search by Callsign") # search by callsign
+    print("\t3. Search by Unit") # search by unit
+    print("\t4. Search by Frequency") # search by radio frequency
+    print("\t5. Search by Unit Type") # search by typpe of unit
     print("\t6. Exit") # exit program
 
     search_type = input("\n\tEnter your search type [1-6]: ") # users input of choice
 
         #using 'not in' for user validity checks
     if search_type not in ["1", "2", "3", "4","5","6"]:
-        print("***INVALID ENTRY!***\nPlease try again")
+        print("***INVALID ENTRY!***\nPlease try again") 
 
     elif search_type == "1":
+        # print list of all data
         print(f"\n{'CALLSIGN':15}\t{'UNIT':4}\t{'RADIO FREQ':10}\t{'UNIT TYPE'}")
         print("-" * 70)
         for i in range(len(callsign)):
@@ -94,14 +99,15 @@ while answer.lower() == "y" and search_type != 4:
         print(f"\nYou have chosen to search by Callsign\n")
         search = input("Which Callsign are you looking for: ").lower()
         found = []
-        # 
+        # search for the callsign you are looking for
         for i in range(0, len(callsign)):
             if search.lower() in callsign[i].lower():
                 found.append(i)
-
+        # call sign is not found
         if not found: 
-            print(f"Sorry, we have no Callsign {search} assigned to us")
+            print(f"Sorry, we have no Callsign {search} assigned to us!")
         else:
+            #display all data that corresponds to the callsign
             display("x", found, len(found))
             time.sleep(2)
 
@@ -111,13 +117,15 @@ while answer.lower() == "y" and search_type != 4:
         search = input("What Unit are you looking for: ")
         
         found = []
-        # 
+        # search for the unit you are looking for
         for i in range(0, len(unit)):
             if search in unit[i]:
                 found.append(i)
         if not found: 
-            print(f"Sorry, {search} is not assigned to us")
+            # unit is not found
+            print(f"Sorry, {search} is not assigned to us!")
         else:
+            #display data that is for the unit searched
             display("x", found, len(found))
             time.sleep(2)
             
@@ -125,13 +133,15 @@ while answer.lower() == "y" and search_type != 4:
         print(f"\nYou have chosen to search by Radio Frequency\n")
         search = input("What Radio Frequency are you looking for: ")
         found = []
-        # 
+        # search for who is on a radio frequency
         for i in range(0, len(radio_freq)):
             if search in radio_freq[i]:
                 found.append(i)
         if not found: 
-            print(f"Sorry, {search} is not assigned to us")
+            # frequency is unknown
+            print(f"Sorry, {search} is not assigned to us!")
         else:
+            # display unit data on the corrsesponding frequency
             display("x", found, len(found))
             time.sleep(2)
 
@@ -139,14 +149,15 @@ while answer.lower() == "y" and search_type != 4:
         print(f"\nYou have chosen to search by Unit Type\n")
         search = input("What Unit are you looking for: ")
         found = []
-        # 
+        # search for unit type
         for i in range(0, len(unit_type)):
             if search.lower() in unit_type[i].lower():
                 found.append(i)
-
+        # unit type not found
         if not found: 
-            print(f"Sorry, {search} is not assigned to us")
+            print(f"Sorry, {search} came up empty!")
         else:
+            # display unit type
             display("x", found, len(found))
             time.sleep(2)
     
