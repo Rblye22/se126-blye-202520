@@ -18,6 +18,7 @@
 import time
 import csv
 import os
+
 #--functions-------------------------------------------------------------------------
 def clear():
     if os.name == 'nt':  # For Windows
